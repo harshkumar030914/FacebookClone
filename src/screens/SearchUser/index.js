@@ -1,19 +1,16 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {
-  View,
-  StyleSheet,
-  TouchableHighlight,
-  ScrollView,
-  FlatList,
-} from 'react-native';
-import {myStyles} from '../../Common/styles';
-import {ActivityIndicator} from 'react-native-paper';
-import SearchBar from '../../components/SearchBar';
-import UserBox from './component/UserBox';
-import {debugLog} from '../../Common/common';
-import {hitFindUserApi} from '../../config/api';
+import React, { useState, useCallback } from "react";
+import { View, StyleSheet } from "react-native";
+import { myStyles } from "../../Common/styles";
+import SearchBar from "../../components/SearchBar";
+import UserBox from "./component/UserBox";
+import { debugLog } from "../../Common/common";
+import { hitFindUserApi } from "../../config/api";
+import { getItem } from "../../utils/utils";
+import { FlashList } from "@shopify/flash-list";
+import { useNavigation } from "@react-navigation/native";
 const SearchUser = () => {
-  const [text, settext] = useState('');
+  const navigation = useNavigation();
+  const [text, settext] = useState("");
   const [data, setdata] = useState([]);
   const [loader, setloader] = useState(true);
   const getItemLayout = (_, index) => ({
@@ -22,28 +19,47 @@ const SearchUser = () => {
     index,
   });
   const _keyExtractor = (item, index) => index.toString();
-  const CallSearchUser = e => {
+  const CallSearchUser = async (e) => {
     settext(e);
     const param = {
-      query: e,
+      query: text,
+      user_id: await getItem("user_id"),
     };
     hitFindUserApi(param)
-      .then(res => {
+      .then((res) => {
+        debugLog(res);
         if (res.status != 0) {
           setdata(res.results);
         }
       })
-      .catch(err => {
+      .catch((err) => {
         debugLog(err);
       });
   };
-  const renderItem = useCallback(({item}) => {
+  const renderItem = useCallback(({ item }) => {
     return (
       <>
-        <UserBox />
+        <UserBox
+          user_name={item.personal_info.username}
+          user_pic={item.user_info.profilePicture}
+          friend={item.friends}
+          onPress={() => {
+            navigation.navigate("FriendsProfile", {
+              id: item._id,
+              data: item,
+            });
+          }}
+        />
       </>
     );
   }, []);
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener("focus", () => {
+
+      CallSearchUser(text);
+    });
+    return unsubscribe;
+  }, [navigation]);
   return (
     <>
       <View style={myStyles.background}>
@@ -51,14 +67,15 @@ const SearchUser = () => {
           <SearchBar
             onChange={CallSearchUser}
             value={text}
-            onClear={() => settext('')}
+            onClear={() => settext("")}
           />
         </View>
-        <FlatList
+        <FlashList
           data={data}
           renderItem={renderItem}
           getItemLayout={getItemLayout}
           keyExtractor={_keyExtractor}
+          estimatedItemSize={80}
         />
       </View>
     </>
@@ -67,7 +84,7 @@ const SearchUser = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: "black",
   },
   camera: {
     flex: 1,

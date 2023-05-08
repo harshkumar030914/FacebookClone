@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "com.facebookbeta.app-mergeDebugResources-37:/values-ko/values-ko.xml",
+            "outputFile": "com.facebookbeta.app-mergeDebugResources-43:/values-ko/values-ko.xml",
             "map": [
-                {
-                    "source": "/home/harsh/.gradle/caches/transforms-3/809e71abc21cfae017fbf8f60058052c/transformed/jetified-ucrop-2.2.6-native/res/values-ko/values-ko.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,112,164",
-                        "endColumns": "56,51,46",
-                        "endOffsets": "107,159,206"
-                    },
-                    "to": {
-                        "startLines": "31,32,33",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "2865,2922,2974",
-                        "endColumns": "56,51,46",
-                        "endOffsets": "2917,2969,3016"
-                    }
-                },
                 {
                     "source": "/home/harsh/.gradle/caches/transforms-3/b5aafe16c84add24fc50a69bc28bd81a/transformed/appcompat-1.4.1/res/values-ko/values-ko.xml",
                     "from": {

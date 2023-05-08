@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.facebookbeta.app-mergeDebugResources-37:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "com.facebookbeta.app-mergeDebugResources-43:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
                     "source": "/home/harsh/.gradle/caches/transforms-3/b5aafe16c84add24fc50a69bc28bd81a/transformed/appcompat-1.4.1/res/values-en-rXC/values-en-rXC.xml",

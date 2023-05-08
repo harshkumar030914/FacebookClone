@@ -11,18 +11,22 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+// @baronha/react-native-multiple-image-picker
+import com.reactnativemultipleimagepicker.MultipleImagePickerPackage;
 // @react-native-async-storage/async-storage
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // @react-native-community/checkbox
 import com.reactnativecommunity.checkbox.ReactCheckBoxPackage;
+// @shopify/flash-list
+import com.shopify.reactnative.flash_list.ReactNativeFlashListPackage;
 // react-native-blurhash
 import com.mrousavy.blurhash.BlurhashPackage;
 // react-native-date-picker
 import com.henninghall.date_picker.DatePickerPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.RNGestureHandlerPackage;
-// react-native-image-crop-picker
-import com.reactnative.ivpusic.imagepicker.PickerPackage;
+// react-native-image-filter-kit
+import iyegoroff.imagefilterkit.ImageFilterKitPackage;
 // react-native-linear-gradient
 import com.BV.LinearGradient.LinearGradientPackage;
 // react-native-reanimated
@@ -39,6 +43,8 @@ import com.oblador.vectoricons.VectorIconsPackage;
 import com.brentvatne.react.ReactVideoPackage;
 // react-native-vision-camera
 import com.mrousavy.camera.CameraPackage;
+// zego-express-engine-reactnative
+import im.zego.reactnative.RCTZegoExpressEnginePackage;
 
 public class PackageList {
   private Application application;
@@ -84,12 +90,14 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
+      new MultipleImagePickerPackage(),
       new AsyncStoragePackage(),
       new ReactCheckBoxPackage(),
+      new ReactNativeFlashListPackage(),
       new BlurhashPackage(),
       new DatePickerPackage(),
       new RNGestureHandlerPackage(),
-      new PickerPackage(),
+      new ImageFilterKitPackage(),
       new LinearGradientPackage(),
       new ReanimatedPackage(),
       new SafeAreaContextPackage(),
@@ -97,7 +105,8 @@ public class PackageList {
       new RNSoundPackage(),
       new VectorIconsPackage(),
       new ReactVideoPackage(),
-      new CameraPackage()
+      new CameraPackage(),
+      new RCTZegoExpressEnginePackage()
     ));
   }
 }

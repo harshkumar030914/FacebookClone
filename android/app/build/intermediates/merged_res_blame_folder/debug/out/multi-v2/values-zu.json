@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.facebookbeta.app-mergeDebugResources-37:/values-zu/values-zu.xml",
+            "outputFile": "com.facebookbeta.app-mergeDebugResources-43:/values-zu/values-zu.xml",
             "map": [
                 {
                     "source": "/home/harsh/.gradle/caches/transforms-3/57e3facbf92c5e79086c2c8ef717f3ef/transformed/core-1.7.0/res/values-zu/values-zu.xml",

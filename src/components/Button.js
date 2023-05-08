@@ -1,35 +1,51 @@
-import React from 'react';
-import {StyleSheet, Text} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import {myStyles} from '../Common/styles';
-import {TouchableRipple} from 'react-native-paper';
-const Button = props => {
+import React from "react";
+import { StyleSheet, Text, Image, View } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+import { myStyles } from "../Common/styles";
+import { TouchableRipple } from "react-native-paper";
+import Colors from "../Common/Colors";
+const Button = ({ disabled, onPress, text, styles, radius, showicon }) => {
   return (
     <>
-      <TouchableRipple disabled={props.disabled} onPress={props.onPress}>
+      <TouchableRipple disabled={disabled} onPress={onPress}>
         <LinearGradient
-          colors={['#384CFF', '#00A3FF']}
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}
+          colors={["#384CFF", "#00A3FF"]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
           style={[
-            styles.linearGradient,
-            props.styles,
+            style.linearGradient,
+            styles,
             {
-              borderRadius: !props.radius ? 25 : 5,
-              height: !props.radius ? 45 : null,
+              borderRadius: !radius ? 25 : 5,
+              height: !radius ? 45 : null,
             },
-          ]}>
-          <Text style={myStyles.buttonText}>{props.text}</Text>
+          ]}
+        >
+          <View style={[myStyles.row2, myStyles.center]}>
+            {showicon && (
+              <Image
+                style={{
+                  height: 16,
+                  width: 15,
+                  tintColor: Colors.white,
+                  marginRight: 5,
+                }}
+                source={showicon}
+                resizeMode="contain"
+              />
+            )}
+            <Text style={myStyles.buttonText}>{text}</Text>
+          </View>
         </LinearGradient>
       </TouchableRipple>
     </>
   );
 };
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   linearGradient: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: 'rgba(28, 120, 255, 0.5)',
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "rgba(28, 120, 255, 0.5)",
     shadowOffset: {
       width: 0,
       height: 4,

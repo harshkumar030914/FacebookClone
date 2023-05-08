@@ -1,4 +1,5 @@
-import types from '../types';
+import { debugLog } from "../../Common/common";
+import types from "../types";
 const initialState = {
   app_theme: 0,
   data: [],
@@ -6,6 +7,8 @@ const initialState = {
   loading: false,
   userdata: [],
   friendlist: [],
+  myfriends: [],
+  friendprofile: [],
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -35,6 +38,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         friendlist: action.payload,
+      };
+    }
+    case types.FRIENDS: {
+      return {
+        ...state,
+        myfriends: action.payload,
+      };
+    }
+    case types.FRIENDSPROFILE: {
+      return {
+        ...state,
+        friendprofile: action.payload,
       };
     }
     default:
